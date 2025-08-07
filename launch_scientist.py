@@ -21,6 +21,17 @@ from ai_scientist.perform_writeup import perform_writeup, generate_latex
 
 NUM_REFLECTIONS = 3
 
+# Add these lines to load .env file
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+
+
+except ImportError:
+    print("python-dotenv not installed. Install it with: pip install python-dotenv")
+    print("Or set environment variables manually.")
+
+
 
 def print_time():
     print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
@@ -112,13 +123,13 @@ def check_latex_dependencies():
     for dep in required_dependencies:
         if shutil.which(dep) is None:
             missing_deps.append(dep)
-    
+
     if missing_deps:
         print("Error: Required LaTeX dependencies not found:", file=sys.stderr)
         return False
-    
+
     return True
-    
+
 def worker(
         queue,
         base_dir,
