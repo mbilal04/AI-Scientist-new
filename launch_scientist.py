@@ -209,7 +209,7 @@ def do_idea(
         io = InputOutput(
             yes=True, chat_history_file=f"{folder_name}/{idea_name}_aider.txt"
         )
-        if model == "deepseek-coder-v2-0724":
+        if model == "deepseek-coder-v2-0724" or model == "deepseek-coder":
             main_model = Model("deepseek/deepseek-coder")
         elif model == "deepseek-reasoner":
             main_model = Model("deepseek/deepseek-reasoner")
@@ -245,7 +245,7 @@ def do_idea(
         if writeup == "latex":
             writeup_file = osp.join(folder_name, "latex", "template.tex")
             fnames = [exp_file, writeup_file, notes]
-            if model == "deepseek-coder-v2-0724":
+            if model == "deepseek-coder-v2-0724" or model == "deepseek-coder":
                 main_model = Model("deepseek/deepseek-coder")
             elif model == "deepseek-reasoner":
                 main_model = Model("deepseek/deepseek-reasoner")
